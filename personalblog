@@ -1,0 +1,14 @@
+import React from "react";
+import BlogList from "../components/BlogList";
+
+const PersonalBlog = () => (
+  <div className="section">
+    <h1>Personal Blog</h1>
+    <p>
+      Thoughts, stories, and life updates. Scroll through to find something new!
+    </p>
+    <BlogList type="personal" />
+  </div>
+);
+
+export default PersonalBlog;
