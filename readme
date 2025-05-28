@@ -1,0 +1,39 @@
+# Emma's Portfolio
+
+## Quick Start
+
+1. Install dependencies  
+   `npm install`
+
+2. Start the dev server  
+   `npm run dev`
+
+3. Edit content:
+   - Home/Contact: Edit `src/pages/Home.jsx`, `src/pages/Contact.jsx`
+   - Blog posts: Add markdown files to `src/content/academic/` or `src/content/personal/`
+   - Images/videos: Add to `public/media/` and reference in markdown frontmatter as `media: "/media/filename.jpg"`
+
+4. To change resume or links, update `public/resume.pdf` and `src/pages/Contact.jsx`.
+
+---
+
+## Deployment
+
+You can deploy to [Vercel](https://vercel.com/), [Netlify](https://www.netlify.com/), or [GitHub Pages](https://vitejs.dev/guide/static-deploy.html).
+
+---
+
+## Color Palette
+
+- Soft White: #FAFAFA
+- Light Taupe: #ECE9E6
+- Warm Gray: #B6B1A9
+- Deep Charcoal: #3A3A3A
+- Gold Accent: #D4AF37
+
+---
+
+## Editing Content
+
+- **Blogs:** Add `.md` files in `src/content/academic/` or `src/content/personal/`.  
+  Example frontmatter:
