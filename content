@@ -1,0 +1,13 @@
+---
+title: "Hello World!"
+date: "2025-01-01"
+excerpt: "A short hello and why I started this blog."
+media: "/media/samplephoto.jpg"
+---
+This is my very first academic blog post. Here, I'll share what I'm learning, researching, and exploring.
+
+You can add images or even videos to your posts:
+
+![Sample](../media/samplephoto.jpg)
+
+Feel free to edit this file or add new Markdown files to this folder for more posts!
