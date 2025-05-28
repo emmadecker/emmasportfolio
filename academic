@@ -1,0 +1,14 @@
+import React from "react";
+import BlogList from "../components/BlogList";
+
+const AcademicBlog = () => (
+  <div className="section">
+    <h1>Academic Blog</h1>
+    <p>
+      Here I share my academic work, essays, research notes, and anything I’m learning. Click on a post to read more.
+    </p>
+    <BlogList type="academic" />
+  </div>
+);
+
+export default AcademicBlog;
