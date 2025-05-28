@@ -1,0 +1,28 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Home = () => (
+  <div className="section">
+    <h1>Hi, I'm Emma!</h1>
+    <p>
+      Welcome to my portfolio. I'm passionate about sharing my academic work, personal thoughts, and connecting with others. This site is always growing, so feel free to check back for new blog posts and updates!
+    </p>
+    <hr style={{margin: "2rem 0", border: "0.5px solid #e0ddda"}}/>
+    <div>
+      <h2>Explore:</h2>
+      <ul>
+        <li>
+          <Link to="/academic-blog">Academic Blog</Link> &mdash; My thoughts, research, and learning journey.
+        </li>
+        <li>
+          <Link to="/personal-blog">Personal Blog</Link> &mdash; Stories, ideas, and things I love.
+        </li>
+        <li>
+          <Link to="/contact">Contact Me</Link> &mdash; Reach out, connect, or see my resume!
+        </li>
+      </ul>
+    </div>
+  </div>
+);
+
+export default Home;
