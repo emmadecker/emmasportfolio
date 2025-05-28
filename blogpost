@@ -1,0 +1,48 @@
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import matter from "gray-matter";
+
+const postImports = {
+  academic: import.meta.glob("../content/academic/*.md", { as: "raw", eager: true }),
+  personal: import.meta.glob("../content/personal/*.md", { as: "raw", eager: true }),
+};
+
+const BlogPost = ({ type }) => {
+  const { slug } = useParams();
+  const [post, setPost] = useState({ content: "", data: {} });
+
+  useEffect(() => {
+    const files = postImports[type];
+    const fileKey = `../content/${type}/${slug}.md`;
+    const raw = files[fileKey];
+    if (raw) {
+      const { content, data } = matter(raw);
+      setPost({ data, content });
+    }
+  }, [slug, type]);
+
+  if (!post.content) return <div className="section">Loading...</div>;
+
+  return (
+    <div className="section">
+      <h1>{post.data.title}</h1>
+      <p style={{color: "var(--muted)"}}>{post.data.date}</p>
+      <ReactMarkdown>{post.content}</ReactMarkdown>
+      {post.data.media && (
+        <div style={{marginTop: "2rem"}}>
+          {post.data.media.endsWith(".mp4") ? (
+            <video controls width="100%">
+              <source src={post.data.media} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <img src={post.data.media} alt="blog media" style={{maxWidth: "100%", borderRadius: "var(--radius)"}} />
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default BlogPost;
