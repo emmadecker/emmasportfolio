@@ -1,0 +1,53 @@
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import matter from "gray-matter";
+
+function importAll(r) {
+  return r.keys().map((key) => ({
+    slug: key.replace(/^\.\//, "").replace(/\.md$/, ""),
+    content: r(key).default,
+  }));
+}
+
+const academicPosts = importAll(
+  import.meta.glob("../content/academic/*.md", { as: "raw", eager: true })
+);
+
+const personalPosts = importAll(
+  import.meta.glob("../content/personal/*.md", { as: "raw", eager: true })
+);
+
+const BlogList = ({ type }) => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const files = type === "academic" ? academicPosts : personalPosts;
+    const parsed = files.map((file) => {
+      const { data } = matter(file.content);
+      return {
+        ...data,
+        slug: file.slug,
+      };
+    });
+    setPosts(parsed.sort((a, b) => new Date(b.date) - new Date(a.date)));
+  }, [type]);
+
+  return (
+    <div>
+      {posts.length === 0 && <p>No posts yet! Check back soon.</p>}
+      <ul>
+        {posts.map((post) => (
+          <li key={post.slug} style={{marginBottom: "1.5rem"}}>
+            <Link to={`/${type}-blog/${post.slug}`}>
+              <h3>{post.title}</h3>
+            </Link>
+            <p style={{color: "var(--muted)", marginTop: "-0.5rem"}}>{post.date}</p>
+            <p>{post.excerpt}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default BlogList;
